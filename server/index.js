@@ -29,13 +29,34 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'OK', message: 'Vehicle Analytics Dashboard API is running' });
 });
 
-// Serve static files in production
+// Serve static files in production only if they exist
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../client/build')));
+  const clientBuildPath = path.join(__dirname, '../client/build');
+  const indexPath = path.join(clientBuildPath, 'index.html');
   
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
-  });
+  // Check if client build files exist
+  if (require('fs').existsSync(indexPath)) {
+    app.use(express.static(clientBuildPath));
+    
+    app.get('*', (req, res) => {
+      res.sendFile(indexPath);
+    });
+  } else {
+    // Backend-only deployment - serve API info at root
+    app.get('/', (req, res) => {
+      res.json({
+        message: 'Vehicle Analytics Dashboard API',
+        version: '1.0.0',
+        endpoints: {
+          health: '/api/health',
+          vehicles: '/api/vehicles',
+          analytics: '/api/analytics',
+          data: '/api/data'
+        },
+        documentation: 'This is a backend-only deployment. Frontend should be deployed separately.'
+      });
+    });
+  }
 }
 
 // Error handling middleware
