@@ -124,7 +124,7 @@ function initializeDatabase() {
 
 // Main setup function
 async function setup() {
-  log('🎯 Vehicle Registration Dashboard Setup\n', 'blue');
+  log(' Vehicle Registration Dashboard Setup\n', 'blue');
   
   // Check prerequisites
   checkNodeVersion();

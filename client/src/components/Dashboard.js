@@ -23,7 +23,7 @@ import {
   Calendar,
   Filter
 } from 'lucide-react';
-import axios from 'axios';
+import apiClient from '../config/axios';
 import { useFilters } from '../App';
 
 const Dashboard = () => {
@@ -33,7 +33,7 @@ const Dashboard = () => {
   const { data: filterOptions } = useQuery({
     queryKey: ['filterOptions'],
     queryFn: async () => {
-      const response = await axios.get('/api/vehicles/filters');
+      const response = await apiClient.get('/api/vehicles/filters');
       return response.data;
     },
     staleTime: 300000, // Cache for 5 minutes
@@ -52,9 +52,9 @@ const Dashboard = () => {
       };
       
       const [stats, trends, marketShare] = await Promise.all([
-        axios.get('/api/vehicles/stats', { params: backendFilters }),
-        axios.get('/api/analytics/trends', { params: { ...backendFilters, period: 'monthly' } }),
-        axios.get('/api/analytics/market-share', { params: backendFilters })
+        apiClient.get('/api/vehicles/stats', { params: backendFilters }),
+        apiClient.get('/api/analytics/trends', { params: { ...backendFilters, period: 'monthly' } }),
+        apiClient.get('/api/analytics/market-share', { params: backendFilters })
       ]);
       
       return {

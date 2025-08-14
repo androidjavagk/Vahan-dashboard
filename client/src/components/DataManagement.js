@@ -12,7 +12,7 @@ import {
   Play,
   Filter
 } from 'lucide-react';
-import axios from 'axios';
+import apiClient from '../config/axios';
 import { toast } from 'react-toastify';
 import { useFilters } from '../App';
 
@@ -25,7 +25,7 @@ const DataManagement = () => {
   const { data: dataStatus, isLoading: statusLoading, refetch: refetchStatus } = useQuery({
     queryKey: ['dataStatus'],
     queryFn: async () => {
-      const response = await axios.get('/api/data/status');
+      const response = await apiClient.get('/api/data/status');
       return response.data;
     },
     refetchInterval: 30000, // Refetch every 30 seconds
@@ -43,7 +43,7 @@ const DataManagement = () => {
         manufacturer: currentFilters.manufacturer
       };
       
-      const response = await axios.get('/api/vehicles/stats', { params: backendFilters });
+      const response = await apiClient.get('/api/vehicles/stats', { params: backendFilters });
       return response.data;
     },
     enabled: !!dataStatus?.data_status?.total_records // Only run if we have data
@@ -89,7 +89,7 @@ const DataManagement = () => {
   const initializeMutation = useMutation({
     mutationFn: async () => {
       setIsInitializing(true);
-      const response = await axios.post('/api/data/init');
+      const response = await apiClient.post('/api/data/init');
       return response.data;
     },
     onSuccess: (data) => {
@@ -110,7 +110,7 @@ const DataManagement = () => {
   // Test data generation mutation
   const testDataMutation = useMutation({
     mutationFn: async () => {
-      const response = await axios.post('/api/data/test-init');
+      const response = await apiClient.post('/api/data/test-init');
       return response.data;
     },
     onSuccess: (data) => {
@@ -149,7 +149,7 @@ const DataManagement = () => {
       
       if (format === 'json') {
         // For JSON, fetch the data and create a download
-        const response = await axios.get(url);
+        const response = await apiClient.get(url);
         const dataStr = JSON.stringify(response.data, null, 2);
         const dataBlob = new Blob([dataStr], { type: 'application/json' });
         const url2 = window.URL.createObjectURL(dataBlob);
@@ -162,7 +162,7 @@ const DataManagement = () => {
         window.URL.revokeObjectURL(url2);
       } else if (format === 'csv') {
         // For CSV, fetch the data and create a download
-        const response = await axios.get(url, {
+        const response = await apiClient.get(url, {
           responseType: 'text',
           headers: {
             'Accept': 'text/csv'

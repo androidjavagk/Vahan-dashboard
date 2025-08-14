@@ -21,7 +21,7 @@ import {
   Filter,
   Download
 } from 'lucide-react';
-import axios from 'axios';
+import apiClient from '../config/axios';
 import { useFilters } from '../App';
 
 const Analytics = () => {
@@ -40,7 +40,7 @@ const Analytics = () => {
   const { data: filterOptions } = useQuery({
     queryKey: ['filterOptions'],
     queryFn: async () => {
-      const response = await axios.get('/api/vehicles/filters');
+      const response = await apiClient.get('/api/vehicles/filters');
       return response.data;
     },
     staleTime: 300000, // Cache for 5 minutes
@@ -57,7 +57,7 @@ const Analytics = () => {
         fuel_type: analyticsFilters.fuelType,
         year: analyticsFilters.year
       };
-      const response = await axios.get('/api/analytics/yoy', { params: backendFilters });
+      const response = await apiClient.get('/api/analytics/yoy', { params: backendFilters });
       return response.data;
     }
   });
@@ -73,7 +73,7 @@ const Analytics = () => {
         fuel_type: analyticsFilters.fuelType,
         year: analyticsFilters.year
       };
-      const response = await axios.get('/api/analytics/qoq', { params: backendFilters });
+      const response = await apiClient.get('/api/analytics/qoq', { params: backendFilters });
       return response.data;
     }
   });
@@ -89,7 +89,7 @@ const Analytics = () => {
         fuel_type: analyticsFilters.fuelType,
         year: analyticsFilters.year
       };
-      const response = await axios.get('/api/analytics/trends', { 
+      const response = await apiClient.get('/api/analytics/trends', { 
         params: { ...backendFilters, period: 'monthly' } 
       });
       return response.data;
