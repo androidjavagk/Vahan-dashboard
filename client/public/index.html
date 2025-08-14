@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Vehicle Registration Dashboard - Interactive analytics for vehicle registration data with investor perspective"
+    />
+    <meta name="keywords" content="vehicle, dashboard, registration, analytics, investment, automotive" />
+    <meta name="author" content="Vehicle Dashboard Team" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Vehicle Registration Dashboard" />
+    <meta property="og:description" content="Interactive analytics for vehicle registration data with investor perspective" />
+    <meta property="og:image" content="%PUBLIC_URL%/og-image.jpg" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content="Vehicle Registration Dashboard" />
+    <meta property="twitter:description" content="Interactive analytics for vehicle registration data with investor perspective" />
+    <meta property="twitter:image" content="%PUBLIC_URL%/og-image.jpg" />
+    
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    
+    <!-- Preconnect to external domains for better performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="%PUBLIC_URL%/favicon.svg" />
+    <link rel="icon" type="image/png" href="%PUBLIC_URL%/favicon.png" />
+    
+    <title>Vehicle Registration Dashboard | Analytics & Insights</title>
+    
+    <style>
+      /* Loading spinner styles */
+      .loading-spinner {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        font-family: 'Inter', sans-serif;
+      }
+      
+      .spinner {
+        width: 50px;
+        height: 50px;
+        border: 3px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        border-top-color: white;
+        animation: spin 1s ease-in-out infinite;
+      }
+      
+      @keyframes spin {
+        to { transform: rotate(360deg); }
+      }
+      
+      .loading-text {
+        margin-left: 20px;
+        font-size: 18px;
+        font-weight: 500;
+      }
+      
+      /* Prevent flash of unstyled content */
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+          'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+          sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        background-color: #f8fafc;
+      }
+      
+      * {
+        box-sizing: border-box;
+      }
+      
+      /* Custom scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      
+      ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+      }
+      
+      ::-webkit-scrollbar-thumb {
+        background: #c1c1c1;
+        border-radius: 4px;
+      }
+      
+      ::-webkit-scrollbar-thumb:hover {
+        background: #a8a8a8;
+      }
+    </style>
+  </head>
+  <body>
+    <noscript>
+      <div style="
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        font-family: 'Inter', sans-serif;
+        text-align: center;
+        padding: 20px;
+      ">
+        <div>
+          <h1>Vehicle Registration Dashboard</h1>
+          <p>You need to enable JavaScript to run this application.</p>
+          <p>This dashboard provides interactive analytics for vehicle registration data with an investor perspective.</p>
+        </div>
+      </div>
+    </noscript>
+    
+    <div id="root">
+      <!-- Loading screen -->
+      <div class="loading-spinner">
+        <div class="spinner"></div>
+        <div class="loading-text">Loading Vehicle Dashboard...</div>
+      </div>
+    </div>
+    
+    <!-- React will replace the content above -->
+  </body>
+</html>

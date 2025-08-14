@@ -1,0 +1,21 @@
+{
+  "name": "vehicle-dashboard-server",
+  "version": "1.0.0",
+  "description": "Backend server for vehicle registration dashboard",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "helmet": "^7.1.0",
+    "moment": "^2.29.4",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
