@@ -2,6 +2,13 @@
 
 A comprehensive, investor-focused dashboard for analyzing vehicle registration data with real Vahan Dashboard integration, Year-over-Year (YoY) and Quarter-over-Quarter (QoQ) growth analysis.
 
+## 🎥 Demo & Live Links
+
+- **📹 Demo Video**: [Watch the 5-minute demo](https://drive.google.com/drive/u/1/folders/1iJghwU_J14MKUKWkZ24pzoSrxelzQGLk)
+- **🌐 Live Application**: [Vahan Dashboard](https://vahan-dashboard-2.onrender.com/)
+
+## 🚀 Features
+
 ## 🚀 Features
 
 ### 📊 Dashboard Overview
